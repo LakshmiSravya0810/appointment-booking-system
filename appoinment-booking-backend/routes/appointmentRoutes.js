@@ -5,10 +5,10 @@ const {
   getAppointments
 } = require("../controllers/appointmentController");
 
-// Create a new appointment
+// POST /api/appointments → Create appointment
 router.post("/", createAppointment);
 
-// Get all appointments
+// GET /api/appointments → Get all appointments
 router.get("/", getAppointments);
 
-module.exports = router;
+module.exports = router; // ✅ Make sure this is exported
