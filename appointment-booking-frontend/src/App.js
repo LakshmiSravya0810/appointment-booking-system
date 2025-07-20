@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,8 @@ function App() {
     time: '',
     reason: ''
   });
-  const [message, setMessage] = useState('');
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -21,7 +23,6 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('');
 
     try {
       const res = await fetch('http://localhost:5000/api/appointments', {
@@ -29,24 +30,16 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
+
       const data = await res.json();
 
       if (res.ok) {
-        setMessage('✅ Appointment booked!');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          doctor: '',
-          date: '',
-          time: '',
-          reason: ''
-        });
+        navigate('/confirmation', { state: data }); // ✅ Redirect to confirmation page with data
       } else {
-        setMessage('❌ Failed: ' + (data.message || data.error));
+        alert('❌ Failed: ' + (data.message || data.error));
       }
     } catch (err) {
-      setMessage('❌ Error: ' + err.message);
+      alert('❌ Error: ' + err.message);
     }
   };
 
@@ -54,11 +47,23 @@ function App() {
     <div style={{ padding: '2rem', maxWidth: '600px', margin: 'auto' }}>
       <h1>Appointment Booking</h1>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}
+      >
         <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <input type="text" name="phone" placeholder="Phone (10 digits)" value={formData.phone} onChange={handleChange}
-          required pattern="\d{10}" maxLength="10" title="Phone number must be exactly 10 digits" />
+        <input
+          type="text"
+          name="phone"
+          placeholder="Phone (10 digits)"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+          pattern="\d{10}"
+          maxLength="10"
+          title="Phone number must be exactly 10 digits"
+        />
         <select name="doctor" value={formData.doctor} onChange={handleChange} required>
           <option value="">Select Doctor</option>
           <option value="Dr. Rao">Dr. Rao</option>
@@ -70,8 +75,6 @@ function App() {
         <textarea name="reason" placeholder="Reason" value={formData.reason} onChange={handleChange} rows="3" />
         <button type="submit">Book Appointment</button>
       </form>
-
-      {message && <p style={{ marginTop: '1rem' }}>{message}</p>}
     </div>
   );
 }
