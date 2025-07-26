@@ -1,0 +1,81 @@
+/* Register.css */
+
+.register-container {
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: #f9fafb;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.register-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #1f2937;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.register-form input:focus {
+  border-color: #7373e6;
+  box-shadow: 0 0 4px rgba(125, 128, 232, 0.4);
+  outline: none;
+}
+
+.register-form button {
+  background-color: #2630bc;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-form button:hover {
+  background-color: #4191cf;
+  transform: scale(1.04);
+}
+
+.register-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.register-message.success {
+  color: green;
+}
+
+.register-message.error {
+  color: red;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

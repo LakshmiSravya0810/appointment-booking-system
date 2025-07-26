@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+// Import routes
 const appointmentRoutes = require('./routes/appointmentRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,25 +14,24 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// API routes
 app.use('/api/appointments', appointmentRoutes);
+app.use('/api/auth', authRoutes);
 
-// Test route
+// Root route
 app.get('/', (req, res) => {
   res.send('Appointment Booking Backend is running!');
 });
-const authRoutes = require('./routes/authRoutes');
 
-// Middleware (add this below express.json)
-app.use('/api/auth', authRoutes);
-
-// DB connection
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => {
-  console.log('Connected to MongoDB');
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  console.log('✅ Connected to MongoDB');
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 })
-.catch((err) => console.error('MongoDB connection failed:', err));
+.catch((err) => {
+  console.error('❌ MongoDB connection failed:', err.message);
+});

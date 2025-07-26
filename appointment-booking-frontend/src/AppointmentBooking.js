@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AppointmentBooking.css';
 
 function AppointmentBooking() {
   const [formData, setFormData] = useState({
@@ -56,10 +57,10 @@ function AppointmentBooking() {
   };
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '600px', margin: 'auto' }}>
+    <div className="appointment-container">
       <h2>Book an Appointment</h2>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+      <form className="appointment-form" onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         <input
@@ -84,7 +85,7 @@ function AppointmentBooking() {
         <button type="submit">Book Appointment</button>
       </form>
 
-      {message && <p style={{ marginTop: '1rem' }}>{message}</p>}
+      {message && <p className="appointment-message">{message}</p>}
     </div>
   );
 }

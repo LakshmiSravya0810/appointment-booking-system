@@ -1,0 +1,190 @@
+.admin-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table th, .admin-table td {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.admin-table thead {
+  background-color: #4a90e2;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.admin-search {
+  width: 60%;
+  padding: 10px 14px;
+  margin: 1rem auto;
+  display: block;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.admin-search:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+.status-dropdown {
+  padding: 6px 10px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+
+.status-dropdown:hover {
+  border-color: #4a90e2;
+}
+
+.status-dropdown:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+}
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background-color: #f0f4ff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+}
+
+.logout-button {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  background-color: #316cd9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #2339e4;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: crimson;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+.filter-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem auto;
+}
+
+.admin-filter {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  min-width: 110px;
+  cursor: pointer;
+  transition: border 0.2s ease;
+}
+
+.admin-filter:hover {
+  border-color: #4a90e2;
+}
+
+.admin-filter:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 2px rgba(74, 144, 226, 0.4);
+}
+
+.csv-btn {
+  padding: 6px 10px;
+  background-color: #2e8b57;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+.csv-btn:hover {
+  background-color: #1c5f3e;
+}
+.overview-cards {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.card {
+  min-width: 120px;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card.total {
+  background-color: #4a90e2;
+}
+
+.card.booked {
+  background-color: #f5a623;
+}
+
+.card.confirmed {
+  background-color: #7ed321;
+}
+
+.card.cancelled {
+  background-color: #d0021b;
+}

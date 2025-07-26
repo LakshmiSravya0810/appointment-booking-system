@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Register.css'; // ✅ Import custom CSS
 
 function Register() {
   const navigate = useNavigate();
@@ -42,15 +43,15 @@ function Register() {
   };
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '400px', margin: 'auto' }}>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+    <div className="register-container">
+      <h1 className="register-title">Create an Account</h1>
+      <form onSubmit={handleSubmit} className="register-form">
+        <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
         <button type="submit">Register</button>
       </form>
-      {message && <p style={{ marginTop: '1rem' }}>{message}</p>}
+      {message && <p className={`register-message ${message.includes('✅') ? 'success' : 'error'}`}>{message}</p>}
     </div>
   );
 }

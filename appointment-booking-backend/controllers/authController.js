@@ -1,8 +1,8 @@
-// controllers/authController.js
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Register a new user
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -27,6 +27,7 @@ exports.registerUser = async (req, res) => {
   }
 };
 
+// Login a user and return JWT
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -46,7 +47,7 @@ exports.loginUser = async (req, res) => {
       token,
       user: {
         id: user._id,
-        name: user.name,
+        email: user.email,
         role: user.role,
       },
     });
