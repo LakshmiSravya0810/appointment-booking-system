@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css';
 
 function AdminDashboard() {
   const [appointments, setAppointments] = useState([]);
-  const [adminName, setAdminName] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [doctorFilter, setDoctorFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [dateFilter, setDateFilter] = useState('');
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   useEffect(() => {
     fetchAppointments();
-    fetchAdmin();
   }, []);
 
   const fetchAppointments = async () => {
@@ -24,20 +30,6 @@ function AdminDashboard() {
       setAppointments(data);
     } catch (err) {
       console.error('Failed to fetch appointments:', err);
-    }
-  };
-
-  const fetchAdmin = async () => {
-    const token = localStorage.getItem('token');
-    try {
-      const res = await fetch('http://localhost:5000/api/auth/me', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      console.log("Admin response:", data);  // 👈 ADD THIS
-      setAdminName(data.name);    
-    } catch (err) {
-      console.error('Failed to fetch admin:', err);
     }
   };
 
@@ -80,6 +72,34 @@ function AdminDashboard() {
     }
   };
 
+  const downloadCSV = () => {
+    const headers = ['Name', 'Email', 'Phone', 'Doctor', 'Date', 'Time', 'Reason', 'Status'];
+    const rows = filtered.map(apt => [
+      apt.name,
+      apt.email,
+      apt.phone,
+      apt.doctor,
+      new Date(apt.date).toLocaleDateString(),
+      apt.time,
+      apt.reason,
+      apt.status
+    ]);
+
+    let csvContent = 'data:text/csv;charset=utf-8,';
+    csvContent += headers.join(',') + '\n';
+    rows.forEach(row => {
+      csvContent += row.join(',') + '\n';
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'filtered_appointments.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const filtered = appointments.filter((apt) => {
     const searchMatch =
       apt.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -104,7 +124,11 @@ function AdminDashboard() {
 
   return (
     <div className="admin-container">
-      <h2>Welcome, Admin 👋</h2>
+      <div className="admin-header">
+        <h2>Welcome, Admin 👋</h2>
+        <button onClick={handleLogout} className="logout-btn">Logout</button>
+      </div>
+
       <h3>Admin Dashboard</h3>
 
       <div className="overview-cards">
@@ -151,6 +175,12 @@ function AdminDashboard() {
           onChange={(e) => setDateFilter(e.target.value)}
           className="admin-filter"
         />
+      </div>
+
+      <div style={{ marginTop: '10px', marginBottom: '20px' }}>
+        <button onClick={downloadCSV} className="download-btn below-filters">
+          📥 Download Filtered Appointments
+        </button>
       </div>
 
       <div className="table-wrapper">
