@@ -1,0 +1,43 @@
+.health-tips-container {
+  padding: 60px 40px;
+  background-color: #fefefe;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.health-tips-container h2 {
+  text-align: center;
+  color: #1abc9c;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.blog-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-left: 6px solid #1abc9c;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+}
+
+.blog-card h3 {
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  color: #555;
+}

@@ -14,9 +14,6 @@ const Home = () => {
             <Link to="/book-appointment" className="hero-btn">Book Appointment</Link>
           </div>
         </div>
-        {/* <div className="hero-image">
-          <img src="https://cdn.pixabay.com/photo/2017/08/06/00/06/people-2583443_1280.jpg" alt="Hospital" />
-        </div> */}
       </section>
 
       {/* Services Section */}
@@ -37,6 +34,25 @@ const Home = () => {
             <img src="https://cdn.pixabay.com/photo/2016/11/14/03/16/brain-1828506_1280.jpg" alt="Neurology" />
             <h3>Neurology</h3>
             <p>Cutting-edge neurological treatments with trusted specialists.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials">
+        <h2>What Our Patients Say</h2>
+        <div className="testimonial-cards">
+          <div className="testimonial-card">
+            <p>“The doctors at Lifecare were incredibly kind and professional. I felt safe and cared for every step of the way!”</p>
+            <h4>- Aisha R.</h4>
+          </div>
+          <div className="testimonial-card">
+            <p>“Booking my appointment online was so easy. The staff were very friendly and the service was top-notch.”</p>
+            <h4>- Rahul M.</h4>
+          </div>
+          <div className="testimonial-card">
+            <p>“I visited for a routine checkup and ended up recommending Lifecare to my entire family. Great experience!”</p>
+            <h4>- Priya K.</h4>
           </div>
         </div>
       </section>

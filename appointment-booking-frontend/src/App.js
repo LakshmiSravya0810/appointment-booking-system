@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import About from './pages/About';
 import Services from './pages/Services';
 import Footer from './components/Footer';
+import HealthTips from './pages/HealthTips';
 import './App.css';
 
 function AppContent() {
@@ -27,6 +28,7 @@ function AppContent() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/health-tips" element={<HealthTips />} />
       </Routes>
 
       {!hideLayout && <Footer />}

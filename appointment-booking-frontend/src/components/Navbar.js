@@ -11,7 +11,9 @@ const Navbar = () => {
         <li><Link to="/book-appointment">Book Appointment</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/services">Services</Link></li>
+        <li><Link to="/health-tips">Health Tips</Link></li>
         <li><Link to="/login">Login</Link></li>
+        
       </ul>
     </nav>
   );
