@@ -1,0 +1,111 @@
+.about-page {
+  padding: 60px 80px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fdfdfd;
+  color: #2c3e50;
+}
+
+.about-page h1 {
+  font-size: 2.8rem;
+  color: #1abc9c;
+  margin-bottom: 20px;
+}
+
+.about-page h2 {
+  color: #16a085;
+  margin-bottom: 15px;
+}
+
+.about-page p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Mission and Vision */
+.mission-vision {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+.mission, .vision {
+  flex: 1;
+  min-width: 280px;
+  background: #ecfdfb;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.mission:hover, .vision:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(86, 182, 234, 0.1);
+}
+
+.mission, .vision {
+  flex: 1;
+  min-width: 280px;
+  background: #ecfdfb;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.mission.vision:hover {
+  transform: translateY(-6px);
+}
+
+/* Why Choose Us */
+.why-choose-us {
+  margin-top: 50px;
+}
+
+.why-choose-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.why-choose-us li {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  color: #34495e;
+}
+
+/* Our Doctors */
+.our-doctors {
+  margin-top: 60px;
+}
+
+.doctor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.doctor-card {
+  background: #f4fefe;
+  padding: 25px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+}
+
+.doctor-card h3 {
+  margin: 10px 0;
+  color: #1abc9c;
+}
+
+.avatar {
+  font-size: 3rem;
+}

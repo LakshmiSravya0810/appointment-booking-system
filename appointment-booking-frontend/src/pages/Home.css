@@ -1,0 +1,139 @@
+.home-container {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  background-image: linear-gradient(rgba(98, 166, 222, 0.932), rgba(255, 255, 255, 0.9)),
+    url('https://www.dreamstime.com/photos-images/hospital.html');
+  background-size: cover;
+  background-position: center;
+  animation: fadeIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-text {
+  max-width: 700px;
+  margin: auto;
+  animation: slideUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  color: #1abc9c;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+.hero-btn {
+  background-color: #1abc9c;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #16a085;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* Services Section */
+.services {
+  background-color: #f9f9f9;
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  color: #1abc9c;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
