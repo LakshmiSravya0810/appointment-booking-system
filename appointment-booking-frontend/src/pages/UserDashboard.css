@@ -1,0 +1,57 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-section {
+  margin-top: 40px;
+}
+
+.dashboard-section h3 {
+  color: #1abc9c;
+  margin-bottom: 20px;
+}
+
+.appointment-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: #f8fefc;
+}
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status-booked {
+  background-color: #ffecb3;
+  color: #8d6e63;
+}
+
+.status-confirmed {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-cancelled {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+.status-ongoing {
+  background-color: orange;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.status-completed {
+  background-color: teal;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 5px;
+}

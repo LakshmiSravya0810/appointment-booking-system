@@ -121,6 +121,8 @@ function AdminDashboard() {
   const booked = appointments.filter(a => a.status === 'booked').length;
   const confirmed = appointments.filter(a => a.status === 'confirmed').length;
   const cancelled = appointments.filter(a => a.status === 'cancelled').length;
+  // const ongoing = appointments.filter(a => a.status === 'ongoing').length;
+  // const completed = appointments.filter(a => a.status === 'completed').length;
 
   return (
     <div className="admin-container">
@@ -167,6 +169,8 @@ function AdminDashboard() {
           <option value="booked">booked</option>
           <option value="confirmed">confirmed</option>
           <option value="cancelled">cancelled</option>
+          <option value="ongoing">ongoing</option>
+          <option value="completed">completed</option>
         </select>
 
         <input
@@ -217,6 +221,8 @@ function AdminDashboard() {
                       <option value="booked">booked</option>
                       <option value="confirmed">confirmed</option>
                       <option value="cancelled">cancelled</option>
+                      <option value="ongoing">ongoing</option>
+                      <option value="completed">completed</option>
                     </select>
                   </td>
                   <td>

@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   name: {
     type: String,
     required: true
@@ -10,15 +15,15 @@ const appointmentSchema = new mongoose.Schema({
     required: true
   },
   phone: {
-  type: String,
-  required: true,
-  validate: {
-    validator: function (v) {
-      return /^\d{10}$/.test(v); // only 10 digits
-    },
-    message: props => `${props.value} is not a valid 10-digit phone number!`
-  }
-},
+    type: String,
+    required: true,
+    validate: {
+      validator: function (v) {
+        return /^\d{10}$/.test(v);
+      },
+      message: props => `${props.value} is not a valid 10-digit phone number!`
+    }
+  },
   doctor: {
     type: String,
     required: true
@@ -36,7 +41,7 @@ const appointmentSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["booked", "completed", "cancelled"],
+    enum: ["booked", "confirmed", "cancelled", "ongoing", "completed"],
     default: "booked"
   }
 }, { timestamps: true });

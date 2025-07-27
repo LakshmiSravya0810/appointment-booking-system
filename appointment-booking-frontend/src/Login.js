@@ -30,7 +30,13 @@ function Login() {
       if (res.ok) {
         setMessage('✅ Login successful');
         localStorage.setItem('token', data.token);
-        navigate(data.user.role === 'admin' ? '/admin-dashboard' : '/book-appointment');
+
+        // Redirect based on user role
+        if (data.user.role === 'admin') {
+          navigate('/admin-dashboard');
+        } else {
+          navigate('/user-dashboard');
+        }
       } else {
         setMessage('❌ ' + (data.message || data.error));
       }
@@ -45,8 +51,22 @@ function Login() {
       <h2 className="login-subtitle">Login</h2>
 
       <form onSubmit={handleSubmit} className="login-form">
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Login</button>
       </form>
 
@@ -54,7 +74,11 @@ function Login() {
         Don’t have an account? <Link className="login-link" to="/register">Register</Link>
       </p>
 
-      {message && <p className={`login-message ${message.includes('✅') ? 'success' : 'error'}`}>{message}</p>}
+      {message && (
+        <p className={`login-message ${message.includes('✅') ? 'success' : 'error'}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 }

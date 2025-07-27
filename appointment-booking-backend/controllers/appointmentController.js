@@ -6,6 +6,7 @@ exports.createAppointment = async (req, res) => {
     const { name, email, phone, doctor, date, time, reason } = req.body;
 
     const appointment = new Appointment({
+      userId: req.user.id, // ✅ Link appointment to logged-in user
       name,
       email,
       phone,
@@ -23,12 +24,12 @@ exports.createAppointment = async (req, res) => {
   }
 };
 
-// ✅ Get appointments for the logged-in user (based on email)
+// ✅ Get appointments for the logged-in user (based on userId)
 exports.getAppointmentsForUser = async (req, res) => {
   try {
-    const userEmail = req.user.email;
+    const userId = req.user.id;
 
-    const appointments = await Appointment.find({ email: userEmail }).sort({ date: -1 });
+    const appointments = await Appointment.find({ userId }).sort({ date: -1 });
     res.status(200).json(appointments);
   } catch (error) {
     console.error("❌ Error in getAppointmentsForUser:", error.message);
