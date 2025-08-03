@@ -66,6 +66,39 @@ exports.updateAppointmentStatus = async (req, res) => {
   }
 };
 
+// ✅ Update appointment date and time (user reschedule) with future validation
+exports.updateAppointmentDateTime = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { date, time } = req.body;
+
+    if (!date || !time) {
+      return res.status(400).json({ message: 'Date and time are required' });
+    }
+
+    // Validate future date and time
+    const newDateTime = new Date(`${date}T${time}`);
+    if (newDateTime <= new Date()) {
+      return res.status(400).json({ message: 'Date and time must be in the future' });
+    }
+
+    const updated = await Appointment.findByIdAndUpdate(
+      id,
+      { date, time },
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ message: 'Appointment not found' });
+    }
+
+    res.status(200).json({ message: 'Appointment rescheduled', appointment: updated });
+  } catch (error) {
+    console.error('❌ Error updating appointment date/time:', error.message);
+    res.status(500).json({ message: 'Failed to reschedule appointment', error: error.message });
+  }
+};
+
 // ✅ Delete appointment (admin only)
 exports.deleteAppointment = async (req, res) => {
   try {

@@ -61,8 +61,22 @@ function AppointmentBooking() {
       <h2>Book an Appointment</h2>
 
       <form className="appointment-form" onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
         <input
           type="text"
           name="phone"
@@ -73,15 +87,39 @@ function AppointmentBooking() {
           pattern="\d{10}"
           maxLength="10"
         />
-        <select name="doctor" value={formData.doctor} onChange={handleChange} required>
+        <select
+          name="doctor"
+          value={formData.doctor}
+          onChange={handleChange}
+          required
+        >
           <option value="">Select Doctor</option>
           <option value="Dr. Rao">Dr. Rao</option>
           <option value="Dr. Mehta">Dr. Mehta</option>
           <option value="Dr. Kapoor">Dr. Kapoor</option>
         </select>
-        <input type="date" name="date" value={formData.date} onChange={handleChange} required />
-        <input type="time" name="time" value={formData.time} onChange={handleChange} required />
-        <textarea name="reason" placeholder="Reason" value={formData.reason} onChange={handleChange} rows="3" />
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+          min={new Date().toISOString().split("T")[0]} // Restrict past dates
+        />
+        <input
+          type="time"
+          name="time"
+          value={formData.time}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="reason"
+          placeholder="Reason"
+          value={formData.reason}
+          onChange={handleChange}
+          rows="3"
+        />
         <button type="submit">Book Appointment</button>
       </form>
 

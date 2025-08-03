@@ -1,35 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
-const Appointment = require('../models/Appointment'); // ✅ Add this line
-
 const {
   createAppointment,
   getAppointmentsForUser,
   getAllAppointments,
   updateAppointmentStatus,
+  updateAppointmentDateTime,
   deleteAppointment
 } = require('../controllers/appointmentController');
 
 const { authMiddleware, authorizeRoles } = require('../middleware/authMiddleware');
 
-// ✅ Get appointments for logged-in user
-router.get('/user', authMiddleware, async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const appointments = await Appointment.find({ userId }).sort({ date: -1 });
-    res.json(appointments);
-  } catch (err) {
-    console.error('Error fetching user appointments:', err.message);
-    res.status(500).json({ message: 'Failed to fetch appointments', error: err.message });
-  }
-});
+// ✅ Use controller for fetching user appointments (Fixes auto-refresh issue)
+router.get('/user', authMiddleware, getAppointmentsForUser);
 
-// ✅ Appointment routes
+// ✅ Appointment CRUD routes
 router.post('/', authMiddleware, createAppointment);
-router.get('/my', authMiddleware, getAppointmentsForUser);
+router.get('/my', authMiddleware, getAppointmentsForUser); // optional if /user is used
 router.get('/all', authMiddleware, authorizeRoles('admin'), getAllAppointments);
 router.put('/:id/status', authMiddleware, authorizeRoles('admin'), updateAppointmentStatus);
+router.put('/:id', authMiddleware, updateAppointmentDateTime);
 router.delete('/:id', authMiddleware, authorizeRoles('admin'), deleteAppointment);
 
 module.exports = router;
